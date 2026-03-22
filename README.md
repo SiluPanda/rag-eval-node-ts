@@ -3,6 +3,7 @@
 Lightweight RAG evaluation metrics for Node.js -- seven metrics, heuristic-first, zero LLM cost in CI.
 
 [![npm version](https://img.shields.io/npm/v/rag-eval-node-ts)](https://www.npmjs.com/package/rag-eval-node-ts)
+[![npm downloads](https://img.shields.io/npm/dt/rag-eval-node-ts.svg)](https://www.npmjs.com/package/rag-eval-node-ts)
 [![license](https://img.shields.io/npm/l/rag-eval-node-ts)](https://github.com/SiluPanda/rag-eval-node-ts/blob/master/LICENSE)
 [![node](https://img.shields.io/node/v/rag-eval-node-ts)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
