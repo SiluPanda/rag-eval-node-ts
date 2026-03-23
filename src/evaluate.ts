@@ -206,13 +206,19 @@ export async function evaluateBatch(
 
   const compositeAggregate = computeCompositeAggregate(results);
 
-  // Compute total cost
+  // Compute total cost (sum from individual results)
   const totalCost: CostTracker = {
     llmCalls: 0,
     estimatedInputTokens: 0,
     estimatedOutputTokens: 0,
     parseFailures: 0,
   };
+  for (const result of results) {
+    totalCost.llmCalls += result.cost.llmCalls;
+    totalCost.estimatedInputTokens += result.cost.estimatedInputTokens;
+    totalCost.estimatedOutputTokens += result.cost.estimatedOutputTokens;
+    totalCost.parseFailures += result.cost.parseFailures;
+  }
 
   // Regression detection
   let regressions: MetricRegression[] | undefined;

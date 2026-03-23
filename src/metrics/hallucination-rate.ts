@@ -21,14 +21,28 @@ export async function scoreHallucinationRate(
 
   const sentences = splitSentences(sample.answer);
 
-  if (sentences.length === 0 || sample.contexts.length === 0) {
+  if (sample.contexts.length === 0) {
     return {
       metricId: 'hallucinationRate',
-      score: sample.contexts.length === 0 ? 0 : 1,
+      score: 0,
       mode: 'heuristic',
-      passed: sample.contexts.length === 0 ? false : true,
+      passed: false,
       threshold,
-      explanation: 'No answer sentences or context chunks to evaluate.',
+      explanation: 'No context chunks provided to evaluate against.',
+      signals,
+      llmCalls: 0,
+      durationMs: Date.now() - start,
+    };
+  }
+
+  if (sentences.length === 0) {
+    return {
+      metricId: 'hallucinationRate',
+      score: 0,
+      mode: 'heuristic',
+      passed: false,
+      threshold,
+      explanation: 'Answer produced no sentences to evaluate.',
       signals,
       llmCalls: 0,
       durationMs: Date.now() - start,
